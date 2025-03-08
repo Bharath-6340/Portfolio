@@ -34,6 +34,26 @@ body {
     border: 3px solid white;
 }
 
+/* Download Resume Button */
+.resume-btn {
+    display: inline-block;
+    background-color: #ff9800; /* Orange color */
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.resume-btn:hover {
+    background-color: #e68900; /* Darker orange on hover */
+}
+
 /* Navigation */
 nav {
     background-color: #0073ff;
