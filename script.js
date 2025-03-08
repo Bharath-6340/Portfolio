@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     typeWriter();
 });
 
-// Scroll Triggered Thanos Effect
+// Scroll Triggered Thanos "Appear" Effect
 document.addEventListener("scroll", function () {
     let sections = document.querySelectorAll("section");
 
@@ -19,13 +19,13 @@ document.addEventListener("scroll", function () {
         let sectionTop = section.getBoundingClientRect().top;
         if (sectionTop < window.innerHeight - 100 && !section.classList.contains("snapped")) {
             section.classList.add("snapped");
-            startThanosEffect(section);
+            startThanosAppearEffect(section);
         }
     });
 });
 
-// Telegram-Style Thanos Effect
-function startThanosEffect(element) {
+// Telegram-Style Thanos "Assemble" Effect
+function startThanosAppearEffect(element) {
     let textElements = element.querySelectorAll("*");
     
     textElements.forEach((textEl) => {
@@ -37,27 +37,17 @@ function startThanosEffect(element) {
             let span = document.createElement("span");
             span.innerText = text[i];
             span.style.display = "inline-block";
-            span.style.opacity = "1";
-            span.style.transform = "translate(0, 0)";
+            span.style.opacity = "0";
+            span.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) rotate(${Math.random() * 360}deg)`;
             textEl.appendChild(span);
 
             setTimeout(() => {
-                let angle = (Math.random() - 0.5) * 2 * Math.PI; // Random angle
-                let speed = Math.random() * 20 + 5; // Random speed
-                let xMove = Math.cos(angle) * speed;
-                let yMove = Math.sin(angle) * speed;
-
                 span.style.transition = "transform 0.8s ease-out, opacity 0.8s ease-out";
-                span.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${Math.random() * 360}deg)`;
-                span.style.opacity = "0";
+                span.style.transform = "translate(0, 0)";
+                span.style.opacity = "1";
             }, i * 20); // Delay each letter for better effect
         }
     });
-
-    // Remove the section completely after animation
-    setTimeout(() => {
-        element.style.display = "none";
-    }, 1000);
 }
 
 // Sticky Navbar on Scroll
