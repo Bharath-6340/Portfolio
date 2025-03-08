@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
     typeWriter();
 });
 
-// Scroll Reveal Animations
+// Scroll Reveal with Thanos Snap Effect
 document.addEventListener("scroll", function () {
     let sections = document.querySelectorAll("section");
+    
     sections.forEach((section) => {
         let sectionTop = section.getBoundingClientRect().top;
         if (sectionTop < window.innerHeight - 100) {
