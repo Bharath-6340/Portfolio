@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     typeWriter();
 });
 
-// Scroll Reveal with Thanos Snap Effect (With Particles)
+// Scroll Reveal with Improved Thanos Snap Effect
 document.addEventListener("scroll", function () {
     let sections = document.querySelectorAll("section");
 
@@ -20,13 +20,13 @@ document.addEventListener("scroll", function () {
         let sectionTop = section.getBoundingClientRect().top;
         if (sectionTop < window.innerHeight - 100 && !section.classList.contains("visible")) {
             section.classList.add("visible");
-            createParticles(section);
+            createThanosEffect(section);
         }
     });
 });
 
-// Create Particles for Thanos Snap Effect
-function createParticles(section) {
+// Create Better Thanos Disintegration Effect
+function createThanosEffect(section) {
     let canvas = document.createElement("canvas");
     canvas.classList.add("particle-canvas");
     section.appendChild(canvas);
@@ -37,14 +37,15 @@ function createParticles(section) {
 
     let particles = [];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 150; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            size: Math.random() * 5 + 2,
-            speedX: (Math.random() - 0.5) * 4,
-            speedY: (Math.random() - 1) * -4,
+            size: Math.random() * 3 + 1, // Smaller particles
+            speedX: (Math.random() - 0.5) * 6, // Spread in all directions
+            speedY: (Math.random() - 0.5) * 6,
             opacity: 1,
+            rotation: Math.random() * 360, // Rotate particles randomly
         });
     }
 
@@ -53,11 +54,14 @@ function createParticles(section) {
         particles.forEach((particle, index) => {
             particle.x += particle.speedX;
             particle.y += particle.speedY;
-            particle.opacity -= 0.02;
+            particle.opacity -= 0.02; // Fade out
+            particle.rotation += 5; // Rotate for better effect
+
             ctx.fillStyle = `rgba(0, 0, 0, ${particle.opacity})`;
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
             ctx.fill();
+
             if (particle.opacity <= 0) {
                 particles.splice(index, 1);
             }
