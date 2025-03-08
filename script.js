@@ -1,4 +1,3 @@
-// Typing Effect for Name
 document.addEventListener("DOMContentLoaded", function () {
     const text = "Hello, I'm Bharath!";
     let i = 0;
@@ -12,69 +11,53 @@ document.addEventListener("DOMContentLoaded", function () {
     typeWriter();
 });
 
-// Scroll Reveal with Improved Thanos Snap Effect
+// Scroll Triggered Thanos Effect
 document.addEventListener("scroll", function () {
     let sections = document.querySelectorAll("section");
 
     sections.forEach((section) => {
         let sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight - 100 && !section.classList.contains("visible")) {
-            section.classList.add("visible");
-            createThanosEffect(section);
+        if (sectionTop < window.innerHeight - 100 && !section.classList.contains("snapped")) {
+            section.classList.add("snapped");
+            startThanosEffect(section);
         }
     });
 });
 
-// Create Better Thanos Disintegration Effect
-function createThanosEffect(section) {
-    let canvas = document.createElement("canvas");
-    canvas.classList.add("particle-canvas");
-    section.appendChild(canvas);
+// Telegram-Style Thanos Effect
+function startThanosEffect(element) {
+    let textElements = element.querySelectorAll("*");
+    
+    textElements.forEach((textEl) => {
+        let text = textEl.innerHTML;
+        textEl.innerHTML = ""; // Clear original text
 
-    let ctx = canvas.getContext("2d");
-    canvas.width = section.clientWidth;
-    canvas.height = section.clientHeight;
+        // Create span for each letter
+        for (let i = 0; i < text.length; i++) {
+            let span = document.createElement("span");
+            span.innerText = text[i];
+            span.style.display = "inline-block";
+            span.style.opacity = "1";
+            span.style.transform = "translate(0, 0)";
+            textEl.appendChild(span);
 
-    let particles = [];
+            setTimeout(() => {
+                let angle = (Math.random() - 0.5) * 2 * Math.PI; // Random angle
+                let speed = Math.random() * 20 + 5; // Random speed
+                let xMove = Math.cos(angle) * speed;
+                let yMove = Math.sin(angle) * speed;
 
-    for (let i = 0; i < 150; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 1, // Smaller particles
-            speedX: (Math.random() - 0.5) * 6, // Spread in all directions
-            speedY: (Math.random() - 0.5) * 6,
-            opacity: 1,
-            rotation: Math.random() * 360, // Rotate particles randomly
-        });
-    }
-
-    function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((particle, index) => {
-            particle.x += particle.speedX;
-            particle.y += particle.speedY;
-            particle.opacity -= 0.02; // Fade out
-            particle.rotation += 5; // Rotate for better effect
-
-            ctx.fillStyle = `rgba(0, 0, 0, ${particle.opacity})`;
-            ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-            ctx.fill();
-
-            if (particle.opacity <= 0) {
-                particles.splice(index, 1);
-            }
-        });
-
-        if (particles.length > 0) {
-            requestAnimationFrame(animateParticles);
-        } else {
-            section.removeChild(canvas);
+                span.style.transition = "transform 0.8s ease-out, opacity 0.8s ease-out";
+                span.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${Math.random() * 360}deg)`;
+                span.style.opacity = "0";
+            }, i * 20); // Delay each letter for better effect
         }
-    }
+    });
 
-    animateParticles();
+    // Remove the section completely after animation
+    setTimeout(() => {
+        element.style.display = "none";
+    }, 1000);
 }
 
 // Sticky Navbar on Scroll
