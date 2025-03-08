@@ -14,23 +14,6 @@ body {
     text-align: center;
 }
 
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-    background: linear-gradient(45deg, #0073ff, #00c6ff);
-    color: white;
-}
-
-.profile-picture {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid white;
-}
-
 /* Navigation */
 nav {
     background-color: #0073ff;
@@ -42,70 +25,34 @@ nav {
     transition: background 0.3s;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-nav ul li a:hover {
-    color: #ffcc00;
-}
-
-/* Sections */
-section {
-    padding: 50px 10%;
-    background: white;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
+/* Sections with Thanos Effect */
+.thanos {
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.5);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-/* Particle Canvas */
-.particle-canvas {
+.thanos.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Particle Effect */
+.particle {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
     pointer-events: none;
+    animation: dustAppear 1.5s linear forwards;
 }
 
-/* Animation */
-.visible {
-    animation: fadeIn 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    0% {
+@keyframes dustAppear {
+    from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(50px) scale(0.2);
     }
-    100% {
+    to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
-}
-
-/* Footer */
-footer {
-    background: #0073ff;
-    color: white;
-    padding: 15px;
-    text-align: center;
 }
