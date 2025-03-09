@@ -1,6 +1,6 @@
 // Typing Effect for Name
 document.addEventListener("DOMContentLoaded", function () {
-    const text = "Hello, I'm Bharath!";
+    const text = "Bharath E";
     let i = 0;
     function typeWriter() {
         if (i < text.length) {
