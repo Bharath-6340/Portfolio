@@ -34,130 +34,20 @@ body {
     border: 3px solid white;
 }
 
-/* Navigation */
-nav {
-    background-color: #0073ff;
-    padding: 10px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background 0.3s;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
+/* Resume Button */
+.resume-btn {
+    display: inline-block;
+    background-color: orange;
     color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-nav ul li a:hover {
-    color: #ffcc00;
-}
-
-/* Sections with Thanos Snap Effect */
-@keyframes thanosSnap {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-        filter: blur(5px);
-        clip-path: circle(0% at 50% 50%);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1);
-        filter: blur(2px);
-        clip-path: circle(50% at 50% 50%);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        filter: blur(0);
-        clip-path: circle(100% at 50% 50%);
-    }
-}
-
-section {
-    padding: 50px 10%;
-    background: white;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.hidden-section {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.visible {
-    animation: thanosSnap 1.2s ease-out forwards;
-}
-
-/* Skills */
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-.skills-list span {
-    background: #0073ff;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
     font-weight: bold;
-    transition: all 0.3s;
-}
-
-.skills-list span:hover {
-    background: #ffcc00;
-    color: black;
-}
-
-/* Project Cards */
-.project-card {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.project-card:hover {
-    transform: scale(1.05);
-}
-
-/* Contact Section */
-#contact a {
     text-decoration: none;
-    color: #0073ff;
-    font-weight: bold;
-    transition: color 0.3s;
+    transition: background 0.3s ease-in-out;
 }
 
-#contact a:hover {
-    color: #ffcc00;
+.resume-btn:hover {
+    background-color: darkorange;
 }
 
-/* Footer */
-footer {
-    background: #0073ff;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
+/*
