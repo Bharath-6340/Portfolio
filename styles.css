@@ -34,6 +34,24 @@ body {
     border: 3px solid white;
 }
 
+/* Resume Button - Small & Orange */
+.resume-btn {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.resume-btn:hover {
+    background-color: darkorange;
+}
+
+
 /* Navigation */
 nav {
     background-color: #0073ff;
